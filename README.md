@@ -1,15 +1,13 @@
-# DNEIZONE Discord Live API
+# DNEIZONE Discord Live API V29
 
-This service powers the real owner/supporter/online counters and the latest #news messages.
+This version adds reliable Owner/Support role detection, names, presences, news, diagnostics and CORS.
 
-Environment variables:
-- DISCORD_BOT_TOKEN (secret; never place it in SellAuth)
+Render environment variables:
+- DISCORD_BOT_TOKEN
 - DISCORD_GUILD_ID=1550135145867124837
 - DISCORD_NEWS_CHANNEL_ID=1550135146722623605
-- DISCORD_SUPPORTER_ROLE_ID (optional; preferred)
-- DISCORD_SUPPORTER_ROLE_NAME=supporter (fallback auto-detection)
-- SITE_ORIGIN=https://dneizones.com
+- DISCORD_OWNER_ROLE_NAME=exact role name (optional; auto-detects owner/founder/inhaber/leitung)
+- DISCORD_SUPPORTER_ROLE_NAME=exact role name (optional; auto-detects supporter/support/helper)
+- alternatively DISCORD_OWNER_ROLE_ID and DISCORD_SUPPORTER_ROLE_ID for exact matching
 
-The Discord bot must have View Channel + Read Message History and the Developer Portal must enable Server Members Intent, Presence Intent and Message Content Intent.
-
-After deployment, set `discordPro.endpoint` in `layouts/master.njk` to the deployment base URL. No bot token goes into the theme.
+After deploy, open `/api/discord` and verify `apiVersion: 29`, `owners`, `supporters`, and `latest`.
